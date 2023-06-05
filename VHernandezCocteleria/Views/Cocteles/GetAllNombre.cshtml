@@ -1,0 +1,68 @@
+﻿@model ML.drinks
+@{
+    ViewData["Title"] = "GetAllNombre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="Row">
+        <div class="text-center">
+          
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-12">
+
+    @using (Html.BeginForm("GetById", "Cocteles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row text-center">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.strDrink)
+                @Html.TextBoxFor(model => model.strDrink, new { @class = "form-control", @id = "txtsrtDrink"})
+                @Html.Label(null, "",new{@class="lblDrink"})
+            </div>
+            <div class="col-md-3">
+                <input type="submit" value="Buscar" class="btn btn-success" />
+            </div>
+        </div>
+    }
+</div>
+
+
+<hr />
+
+        @foreach (ML.drinks cocteles in Model.Coctels)
+        {
+         
+ 
+    
+    <main>
+        <div class="card" style="width: 20rem;">
+            <img src="@cocteles.strDrinkThumb" class="card-img-top">
+            <div class="card-content">
+                <h2>
+                    @cocteles.strDrink
+                </h2>
+                <p>
+                    @cocteles.strInstructions
+                </p>
+                <a href="#" class="button">
+                    <img src="@cocteles.Imagen1" style="width: 50px; heigh:50px;">
+                   
+                    <span class="material-symbols-outlined">
+                       
+                    </span>
+                </a>
+            </div>
+           
+        </div>
+    </main>
+             
+        
+        }
+
+
+
+
+

@@ -1,0 +1,48 @@
+﻿@model ML.drinks
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+
+<div class="col-md-12">
+
+    @using (Html.BeginForm("GetById", "Cocteles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row text-center">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.strDrink)
+                @Html.TextBoxFor(model => model.strDrink, new { @class = "form-control", @id = "txtsrtDrink"})
+                @Html.Label(null, "",new{@class="lblDrink"})
+            </div>
+            <div class="col-md-3">
+                <input type="submit" value="Buscar" class="btn btn-success" />
+
+            </div>
+        </div>
+    }
+</div>
+
+@foreach (ML.drinks cocteles in Model.Coctels)
+{
+    <div class="card mb-3" style="width: 18rem; display: inline-flex; width:100px height:100px;">
+        <img src="@cocteles.strDrinkThumb" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">@cocteles.strDrink</h5>
+            <p class="card-text">@cocteles.strInstructions</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">@cocteles.idDrink</li>
+            <li class="list-group-item">@cocteles.strCategory</li>
+            <ul class="card-title card-header text-center bg-secondary"><h5>Ingredientes</h5></ul>
+
+            <li class="list-group-item" style="width:50px height:40px;"><img id="Img" src="@cocteles.Imagen1" />@cocteles.strIngredient1</li>
+            <li class="list-group-item" style="width:50px height:40px;"><img id="Img" src="@cocteles.Imagen2" />@cocteles.strIngredient2</li>
+            <li class="list-group-item" style="width:50px height:40px;"><img id="Img" src="@cocteles.Imagen3" />@cocteles.strIngredient3</li>
+
+        </ul>
+
+    </div>
+}
+
